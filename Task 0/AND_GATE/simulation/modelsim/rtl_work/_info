@@ -1,0 +1,59 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/AT_23-24/Task 0/AND_GATE/simulation/modelsim
+vand_gate
+Z1 !s110 1694284154
+!i10b 1
+!s100 I5moR<:]IniIGAI_jC13M3
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I:0JH;28k]S3j^o>]g7RLj1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1694280756
+8D:/AT_23-24/Task 0/AND_GATE/and_gate.v
+FD:/AT_23-24/Task 0/AND_GATE/and_gate.v
+!i122 0
+L0 1 5
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1694284154.000000
+!s107 D:/AT_23-24/Task 0/AND_GATE/and_gate.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/AT_23-24/Task 0/AND_GATE|D:/AT_23-24/Task 0/AND_GATE/and_gate.v|
+!i113 1
+Z6 o-vlog01compat -work work
+Z7 !s92 -vlog01compat -work work {+incdir+D:/AT_23-24/Task 0/AND_GATE}
+Z8 tCvgOpt 0
+vand_gate_test_bench
+R1
+!i10b 1
+!s100 bWU7MP8E]O9Y`0l23h7ZJ2
+R2
+Ig9boOIgNXfS2FEDZ^C@fk1
+R3
+R0
+w1694281485
+8D:/AT_23-24/Task 0/AND_GATE/and_gate_test_bench.v
+FD:/AT_23-24/Task 0/AND_GATE/and_gate_test_bench.v
+!i122 1
+L0 2 17
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/AT_23-24/Task 0/AND_GATE/and_gate_test_bench.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/AT_23-24/Task 0/AND_GATE|D:/AT_23-24/Task 0/AND_GATE/and_gate_test_bench.v|
+!i113 1
+R6
+R7
+R8

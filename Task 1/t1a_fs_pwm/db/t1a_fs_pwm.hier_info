@@ -1,0 +1,11 @@
+|t1a_fs_pwm
+pwm_signal <= <GND>
+clk_195KHz <= <GND>
+clk_3125KHz <= <GND>
+clk_50M => ~NO_FANOUT~
+duty_cycle[0] => ~NO_FANOUT~
+duty_cycle[1] => ~NO_FANOUT~
+duty_cycle[2] => ~NO_FANOUT~
+duty_cycle[3] => ~NO_FANOUT~
+
+

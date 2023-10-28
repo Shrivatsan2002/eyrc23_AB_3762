@@ -1,0 +1,33 @@
+|ripple_carry_adder
+a[0] => a[0].IN1
+a[1] => a[1].IN1
+b[0] => b[0].IN1
+b[1] => b[1].IN1
+s[0] << full_adder:fa0.port2
+s[1] << full_adder:fa1.port2
+cin => cin.IN1
+cout << full_adder:fa1.port4
+
+
+|ripple_carry_adder|full_adder:fa0
+a => s.IN0
+a => cout.IN0
+b => s.IN1
+b => cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+cin => s.IN1
+cin => cout.IN1
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ripple_carry_adder|full_adder:fa1
+a => s.IN0
+a => cout.IN0
+b => s.IN1
+b => cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+cin => s.IN1
+cin => cout.IN1
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
