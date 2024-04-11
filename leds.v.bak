@@ -1,0 +1,13 @@
+module leds(on,off,r,g,b);
+input on,off
+output [2:0] r,g,b;
+always @(negedge on)begin
+{r,g,b}=9'b000_000_111;
+end
+always @(negedge off)begin
+
+{r,g,b}=9'b000_000_000;
+end
+
+
+endmodule

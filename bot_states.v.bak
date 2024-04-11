@@ -1,0 +1,32 @@
+module bot_states(clk,en,unit_msg,unit_list,EP,cpu_en);
+input clk,en,unit_msg;
+input[1:0] unit_list;
+output cpu_en;
+integer count;
+parameter IDENTIFY_FAULT=2'b00; PICK_BLOCK=2'b01; BLOCK_DROP=2'b10;
+reg[1:0] present_state=0;reg[1:0] next_state=0;
+reg start=0;
+always@(posedge clk)begin
+	if(unit_msg==1)begin	start=1;unit_list[idx]=unit_pulse;idx=idx+1; end
+	if(start==1)begin
+		case(present_state)
+			IDENTIFY_FAULT:begin
+				case(unit_pulse)
+					00:begin cpu_en=1;EP=29; end
+				
+				endcase
+			
+			end
+		
+		
+		endcase
+		present_state=next_state;
+	end
+
+
+
+end
+
+
+
+endmodule

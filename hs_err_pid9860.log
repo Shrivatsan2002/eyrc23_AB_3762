@@ -1,0 +1,206 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 718896 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=9860, tid=0x0000000000001ef4
+#
+# JRE version: OpenJDK Runtime Environment (8.0_265-b01) (build 1.8.0_265-b01)
+# Java VM: OpenJDK 64-Bit Server VM (25.265-b01 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000016ef13cb800):  JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=7924, stack(0x0000002c44e00000,0x0000002c44f00000)]
+
+Stack: [0x0000002c44e00000,0x0000002c44f00000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:    520  773       4       com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl::scanStartElement (1026 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000016ef1464000 JavaThread "Service Thread" daemon [_thread_blocked, id=21332, stack(0x0000002c45100000,0x0000002c45200000)]
+  0x0000016ef13cf800 JavaThread "C1 CompilerThread3" daemon [_thread_in_native, id=17208, stack(0x0000002c45000000,0x0000002c45100000)]
+  0x0000016ef13cc800 JavaThread "C2 CompilerThread2" daemon [_thread_in_native, id=18800, stack(0x0000002c44f00000,0x0000002c45000000)]
+=>0x0000016ef13cb800 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=7924, stack(0x0000002c44e00000,0x0000002c44f00000)]
+  0x0000016ef13c7000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=22176, stack(0x0000002c44d00000,0x0000002c44e00000)]
+  0x0000016ef13c6000 JavaThread "Attach Listener" daemon [_thread_blocked, id=8048, stack(0x0000002c44c00000,0x0000002c44d00000)]
+  0x0000016ef13b6800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=14416, stack(0x0000002c44b00000,0x0000002c44c00000)]
+  0x0000016ef1398800 JavaThread "Finalizer" daemon [_thread_blocked, id=21140, stack(0x0000002c44a00000,0x0000002c44b00000)]
+  0x0000016ef1390800 JavaThread "Reference Handler" daemon [_thread_blocked, id=18824, stack(0x0000002c44900000,0x0000002c44a00000)]
+  0x0000016edf82c000 JavaThread "main" [_thread_in_Java, id=21116, stack(0x0000002c44700000,0x0000002c44800000)]
+
+Other Threads:
+  0x0000016ef1365000 VMThread [stack: 0x0000002c44800000,0x0000002c44900000] [id=18296]
+  0x0000016ef147e800 WatcherThread [stack: 0x0000002c45200000,0x0000002c45300000] [id=11736]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000000a2400000, size: 1500 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ def new generation   total 78016K, used 40283K [0x00000000a2400000, 0x00000000a78a0000, 0x00000000c1800000)
+  eden space 69376K,  58% used [0x00000000a2400000, 0x00000000a4b56d88, 0x00000000a67c0000)
+  from space 8640K,   0% used [0x00000000a67c0000, 0x00000000a67c0000, 0x00000000a7030000)
+  to   space 8640K,   0% used [0x00000000a7030000, 0x00000000a7030000, 0x00000000a78a0000)
+ tenured generation   total 173440K, used 0K [0x00000000c1800000, 0x00000000cc160000, 0x0000000100000000)
+   the space 173440K,   0% used [0x00000000c1800000, 0x00000000c1800000, 0x00000000c1800200, 0x00000000cc160000)
+ Metaspace       used 8601K, capacity 8684K, committed 8960K, reserved 1056768K
+  class space    used 885K, capacity 912K, committed 1024K, reserved 1048576K
+
+Card table byte_map: [0x0000016ef0580000,0x0000016ef0870000] byte_map_base: 0x0000016ef006e000
+
+Polling page: 0x0000016ee1190000
+
+CodeCache: size=245760Kb used=3470Kb max_used=3470Kb free=242289Kb
+ bounds [0x0000016ee11c0000, 0x0000016ee1530000, 0x0000016ef01c0000]
+ total_blobs=1099 nmethods=773 adapters=239
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.516 Thread 0x0000016ef13cf800 nmethod 787 0x0000016ee1503010 code [0x0000016ee1503160, 0x0000016ee1503278]
+Event: 0.518 Thread 0x0000016ef13cf800  788       1       com.altera.sopcmodel.util.CatalogCard::getType (5 bytes)
+Event: 0.518 Thread 0x0000016ef13cf800 nmethod 788 0x0000016ee150f190 code [0x0000016ee150f2e0, 0x0000016ee150f3f8]
+Event: 0.518 Thread 0x0000016ef13cf800  789       3       java.lang.String::contains (20 bytes)
+Event: 0.518 Thread 0x0000016ef13cf800 nmethod 789 0x0000016ee1521210 code [0x0000016ee15213a0, 0x0000016ee1521840]
+Event: 0.518 Thread 0x0000016ef13cf800  790       3       com.altera.sopcmodel.util.Version::getShortString (17 bytes)
+Event: 0.518 Thread 0x0000016ef13cf800 nmethod 790 0x0000016ee1518c90 code [0x0000016ee1518e00, 0x0000016ee15190b0]
+Event: 0.518 Thread 0x0000016ef13cf800  791       3       com.altera.sopclibrary.conan.Catalog::nameOverrideMatches (49 bytes)
+Event: 0.519 Thread 0x0000016ef13cf800 nmethod 791 0x0000016ee1527590 code [0x0000016ee1527860, 0x0000016ee1528e30]
+Event: 0.519 Thread 0x0000016ef13cf800  792       3       com.altera.utilities.altNode.AltNode::getChildren (314 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (10 events):
+Event: 0.438 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee14d250c method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.skipSpaces()Z @ 125
+Event: 0.441 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee14bb4b4 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.checkBeforeLoad(Lcom/sun/xml/internal/stream/Entity$ScannedEntity;II)I @ 18
+Event: 0.453 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee14cf0ec method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.scanChar(Lcom/sun/org/apache/xerces/internal/impl/XMLScanner$NameType;)I @ 59
+Event: 0.453 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee14d1a48 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.scanLiteral(ILcom/sun/org/apache/xerces/internal/xni/XMLString;Z)I @ 587
+Event: 0.463 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee14ce6f8 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.peekChar()I @ 14
+Event: 0.466 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee1502990 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.scanLiteral(ILcom/sun/org/apache/xerces/internal/xni/XMLString;Z)I @ 44
+Event: 0.491 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee14dcfc8 method=com.sun.org.apache.xerces.internal.util.SymbolTable.addSymbol([CII)Ljava/lang/String; @ 38
+Event: 0.491 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee15059fc method=com.sun.org.apache.xerces.internal.util.SymbolTable.addSymbol([CII)Ljava/lang/String; @ 38
+Event: 0.504 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee1519760 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.scanContent(Lcom/sun/org/apache/xerces/internal/xni/XMLString;)I @ 418
+Event: 0.516 Thread 0x0000016edf82c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000016ee14dda9c method=com.sun.org.apache.xerces.internal.util.AugmentationsImpl$SmallContainer.clear()V @ 9
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.159 Thread 0x0000016edf82c000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000a2c15a90) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.159 Thread 0x0000016edf82c000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000a2c15ca0) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.366 Thread 0x0000016edf82c000 Implicit null exception at 0x0000016ee1380f94 to 0x0000016ee1381341
+Event: 0.517 Thread 0x0000016edf82c000 Exception <a 'java/lang/ClassNotFoundException': > (0x00000000a49ccb88) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jni.cpp, line 738]
+Event: 0.518 Thread 0x0000016edf82c000 Exception <a 'java/lang/ClassNotFoundException': > (0x00000000a49e8a38) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jni.cpp, line 738]
+Event: 0.518 Thread 0x0000016edf82c000 Exception <a 'java/lang/ClassNotFoundException': > (0x00000000a49eb198) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jni.cpp, line 738]
+Event: 0.519 Thread 0x0000016edf82c000 Exception <a 'java/lang/ClassNotFoundException': > (0x00000000a49ed980) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jni.cpp, line 738]
+Event: 0.519 Thread 0x0000016edf82c000 Exception <a 'java/lang/ClassNotFoundException': > (0x00000000a49f0118) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jni.cpp, line 738]
+Event: 0.519 Thread 0x0000016edf82c000 Exception <a 'java/lang/ClassNotFoundException': > (0x00000000a49f2908) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jni.cpp, line 738]
+Event: 0.519 Thread 0x0000016edf82c000 Exception <a 'java/lang/ClassNotFoundException': > (0x00000000a49f5098) thrown at [J:\jenkins\tmp\workspace\build\src\hotspot\src\share\vm\prims\jni.cpp, line 738]
+
+Events (10 events):
+Event: 0.504 Thread 0x0000016edf82c000 DEOPT UNPACKING pc=0x0000016ee1205583 sp=0x0000002c447fde88 mode 2
+Event: 0.516 Thread 0x0000016edf82c000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000016ee14dda9c
+Event: 0.516 Thread 0x0000016edf82c000 DEOPT PACKING pc=0x0000016ee14dda9c sp=0x0000002c447fde70
+Event: 0.516 Thread 0x0000016edf82c000 DEOPT UNPACKING pc=0x0000016ee1205583 sp=0x0000002c447fde00 mode 2
+Event: 0.516 loading class com/altera/sopclibrary/conan/Analyzer$2
+Event: 0.516 loading class com/altera/sopclibrary/conan/Analyzer$2 done
+Event: 0.516 loading class com/altera/sopcmodel/util/IElementPresetList
+Event: 0.516 loading class com/altera/sopcmodel/util/IElementPresetList done
+Event: 0.517 loading class com/altera/sopclibrary/conan/ConanUtils
+Event: 0.517 loading class com/altera/sopclibrary/conan/ConanUtils done
+
+
+Dynamic libraries:
+0x00007ff63d020000 - 0x00007ff63d05a000 	E:\quartus\quartus\bin64\jre64\bin\java.exe
+0x00007ffb99370000 - 0x00007ffb99568000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffb97da0000 - 0x00007ffb97e5d000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffb96d90000 - 0x00007ffb97086000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffb97810000 - 0x00007ffb978bf000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffb97770000 - 0x00007ffb9780e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffb97460000 - 0x00007ffb974fc000 	C:\Windows\System32\sechost.dll
+0x00007ffb97ad0000 - 0x00007ffb97bf6000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffb97510000 - 0x00007ffb976ae000 	C:\Windows\System32\USER32.dll
+0x00007ffb96d60000 - 0x00007ffb96d82000 	C:\Windows\System32\win32u.dll
+0x00007ffb98b30000 - 0x00007ffb98b5c000 	C:\Windows\System32\GDI32.dll
+0x00007ffb96a50000 - 0x00007ffb96b6a000 	C:\Windows\System32\gdi32full.dll
+0x00007ffb971f0000 - 0x00007ffb9728d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffb96b70000 - 0x00007ffb96c70000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffb806c0000 - 0x00007ffb8095a000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.3636_none_60b6a03d71f818d5\COMCTL32.dll
+0x00007ffb98a50000 - 0x00007ffb98a80000 	C:\Windows\System32\IMM32.DLL
+0x00007ffae1ad0000 - 0x00007ffae1bbf000 	E:\quartus\quartus\bin64\jre64\bin\msvcr120.dll
+0x00007ffae1a20000 - 0x00007ffae1ac6000 	E:\quartus\quartus\bin64\jre64\bin\msvcp120.dll
+0x0000000059b30000 - 0x000000005a396000 	E:\quartus\quartus\bin64\jre64\bin\server\jvm.dll
+0x00007ffb97d20000 - 0x00007ffb97d28000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffb777d0000 - 0x00007ffb777d9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffb89e70000 - 0x00007ffb89e7a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffb97d30000 - 0x00007ffb97d9b000 	C:\Windows\System32\WS2_32.dll
+0x00007ffb6ce40000 - 0x00007ffb6ce67000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffb581f0000 - 0x00007ffb581ff000 	E:\quartus\quartus\bin64\jre64\bin\verify.dll
+0x00007ffb3f4d0000 - 0x00007ffb3f4f8000 	E:\quartus\quartus\bin64\jre64\bin\java.dll
+0x00007ffb3fab0000 - 0x00007ffb3fac6000 	E:\quartus\quartus\bin64\jre64\bin\zip.dll
+0x00007ffb97e90000 - 0x00007ffb985d5000 	C:\Windows\System32\SHELL32.dll
+0x00007ffb94af0000 - 0x00007ffb9528b000 	C:\Windows\SYSTEM32\windows.storage.dll
+0x00007ffb98fd0000 - 0x00007ffb99324000 	C:\Windows\System32\combase.dll
+0x00007ffb96490000 - 0x00007ffb964bd000 	C:\Windows\SYSTEM32\Wldp.dll
+0x00007ffb98640000 - 0x00007ffb986ed000 	C:\Windows\System32\SHCORE.dll
+0x00007ffb97710000 - 0x00007ffb97765000 	C:\Windows\System32\shlwapi.dll
+0x00007ffb96980000 - 0x00007ffb969a5000 	C:\Windows\SYSTEM32\profapi.dll
+
+VM Arguments:
+jvm_args: -Xmx1500M -XX:+UseSerialGC 
+java_command: com.altera.sopcmodel.sbtools.sbcatalog.SbCatalog --xml --project-directory= --search-path=$,E:\QUARTUS\AT_23-24\eyrc23_ab_3762\AB_3762_Task4,E:\QUARTUS\AT_23-24\eyrc23_ab_3762\AB_3762_Task4
+java_class_path (initial): E:/quartus/quartus/sopc_builder/model/lib\Nlview.jar;E:/quartus/quartus/sopc_builder/model/lib\TableLayout.jar;E:/quartus/quartus/sopc_builder/model/lib\appframework-1.03.jar;E:/quartus/quartus/sopc_builder/model/lib\asm-3.1.jar;E:/quartus/quartus/sopc_builder/model/lib\asm-commons-3.1.jar;E:/quartus/quartus/sopc_builder/model/lib\basicmodel.jar;E:/quartus/quartus/sopc_builder/model/lib\beansbinding-1.2.1.jar;E:/quartus/quartus/sopc_builder/model/lib\binding-2.0.6.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.componenteditor2.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.app_lib.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.editor.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.elements.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.plugin.core.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.plugin.hal.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.plugin.lwhal.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.schema.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.bsp.scripting.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.commandline.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.cpexample.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.flash.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.launch.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.swinfo.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.embeddedsw.utilities.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.entityinterfaces.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.genman.jar;E:/quartus/quartus/sopc_builder/model/lib\com.altera.hdlcomponent.jar;E:/quartus/quartus/sopc_builder/mod
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java
+PATH=E:/quartus/quartus/bin64;e:\quartus\quartus\bin64\;e:\quartus\quartus\bin64\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\python310\Scripts\;C:\python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Java\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\MinGW\bin;C:\msys64\mingw64\bin;C:\Users\vaseekaran\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.2\bin;;D:\iverilog\bin;D:\iverilog\gtkwave\bin;E:\QUARTUS\modelsim_ase\win32aloem;C:\Users\vaseekaran\AppData\Local\GitHubDesktop\bin;C:\Users\vaseekaran\AppData\Roaming\npm
+USERNAME=vaseekaran
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 19041 (10.0.19041.3636)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 140 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 16555320k(3249204k free), swap 35755316k(5164k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.265-b01) for windows-amd64 JRE (1.8.0_265-b01), built on Jul 28 2020 15:11:27 by "jenkins" with MS VC++ 12.0 (VS2013)
+
+time: Sat Jan 20 16:24:35 2024
+timezone: India Standard Time
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

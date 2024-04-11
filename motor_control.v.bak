@@ -1,0 +1,143 @@
+module motor_control(
+clk,
+reset,
+left1,
+center1,
+right1,
+a,b,c,d
+);
+
+input clk;
+input reset;
+
+
+
+input [11:0] left1;
+input [11:0] right1;
+input [11:0] center1;
+reg [3:0] count;
+wire u1,u2,u3;
+assign u1=left1>500;
+assign u2=center1>500;
+assign u3=right1>500;
+reg pwm;
+wire [2:0] sensor = {u1,u2,u3};
+output reg a,b,c,d;
+reg [2:0] y,Y;
+parameter forward = 0,
+			 left = 1,
+			 right = 2,
+			 stop = 3,
+			 junction= 4;
+initial begin
+
+{a,b,c,d}=0;
+{y,Y}=0;
+count=0;
+end
+
+always @(posedge clk)begin
+case(y)
+	forward:
+		casex(sensor)
+			3'b000: Y = stop;
+			3'b100: Y = left;
+			3'b110: Y = left;
+			3'b001: Y = right;
+			3'b011: Y = right;
+			3'b111: Y = junction;
+			default: Y = forward;
+		endcase
+
+	left:
+		casex(sensor)
+			3'b000: Y = stop;
+			3'b010: Y = forward;
+			3'b001: Y = right;
+			3'b011: Y = right;
+			3'b111: Y = junction;
+			default: Y = left;
+		endcase
+
+	right:
+		casex(sensor)
+			3'b000: Y = stop;
+			3'b010: Y = forward;
+			3'b110: Y = left;
+			3'b100: Y = left;
+			3'b111: Y = junction;
+			default: Y = right;
+		endcase
+
+	junction:
+		casex(sensor)
+			3'b001: Y = right;
+			default: Y = junction;
+		endcase
+	endcase
+	y=Y;
+end
+always@(posedge clk) begin
+count=count+1;
+if(count<=4)begin
+pwm=1;
+end
+else begin
+pwm=0;
+end
+end
+
+always @(Y) begin
+		case(Y) 
+			forward:
+				begin
+				a=1;
+				b=0;
+				c=1;
+				d=0;
+				end
+			left:
+				begin
+				a=0;
+				b=0;
+				c=1;
+				d=0;
+				end
+			right:
+				begin
+				a=1;
+				b=0;
+				c=0;
+				d=0;
+				end
+			junction:
+				begin
+				a=pwm;
+				b=0;
+				c=0;
+				d=0;
+				end
+			stop:
+				begin
+				a=0;
+				b=0;
+				c=0;
+				d=0;
+				end
+			default:
+				begin
+				a=pwm ;
+				b=0;
+				c=pwm;
+				d=0;
+				end
+		endcase
+end
+
+
+
+
+
+
+
+endmodule

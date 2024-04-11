@@ -1,0 +1,35 @@
+module electromagnet(clk,present_node,en,o1,o2);
+	input clk,en;
+	input[4:0] present_node;
+	reg[3:0] fault_detect_count=0;
+	output o1,o2;
+	reg pwm=0;
+	reg o1=0;reg o2=0;
+	always@(negedge en)begin
+		fault_detect_count=fault_detect_count+1;
+
+	end
+	always@(posedge clk)begin
+		count=count+1;
+		if(count<=13)begin
+			pwm=1;
+		end
+		else begin
+			pwm=0;
+		end
+		
+	end
+	always @(posedge clk)begin
+		if(present_node==23)begin
+			o1=pwm;
+			o2=0;
+		end
+		if(fault_detect_count==4)begin
+			o1=0;
+			o2=0;
+		end
+	
+	end
+
+
+endmodule
